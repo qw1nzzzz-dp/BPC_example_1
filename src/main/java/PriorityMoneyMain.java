@@ -37,6 +37,110 @@ public class PriorityMoneyMain {
 
         case14(game);
 
+        case_primer_1(game);
+
+        case_primer_2(game);
+
+        case_rebuy_primer_1(game);
+
+        case_rebuy_primer_2(game);
+
+    }
+
+    private static void case_rebuy_primer_2(Game game) {
+        System.out.println("\ncase_rebuy_primer_2");
+        Balance balance = new Balance();
+        balance.real = 100;
+        balance.bonus = 100;
+
+        float buyIn = 100;
+        float tableResult = 150;
+        float[] rebuys = {100};
+        float[] rebuysTR = {0};
+        Balance[] refils = {new Balance(100, 0)};
+
+        GameResult gr = game.game(balance, buyIn, tableResult, rebuys, refils, rebuysTR);
+
+        assertEquals("Неверная сумма байин+ребай", 200, gr.lastSumBuyIn);
+        assertEquals("Неверный table result", 150, gr.tableResult);
+        assertEquals("Неверный Начислили юзеру - реальный", 150, gr.returnBalance.real);
+        assertEquals("Неверный Начислили юзеру - бонусный", 0, gr.returnBalance.bonus);
+        assertEquals("Неверный Баланс юзера новый - реальный", 200, gr.balance.real);
+        assertEquals("Неверный Баланс юзера новый - бонусный", 50, gr.balance.bonus);
+
+        System.out.println("\n========================================================\n");
+    }
+
+    private static void case_rebuy_primer_1(Game game) {
+        System.out.println("\ncase_rebuy_primer_1");
+        Balance balance = new Balance();
+        balance.real = 1000;
+        balance.bonus = 720;
+
+        float buyIn = 500;
+        float tableResult = 550;
+        float[] rebuys = {100};
+        float[] rebuysTR = {300};
+        Balance[] refils = {};
+
+        GameResult gr = game.game(balance, buyIn, tableResult, rebuys, refils, rebuysTR);
+
+        assertEquals("Неверная сумма байин+ребай", 600, gr.lastSumBuyIn);
+        assertEquals("Неверный table result", 550, gr.tableResult);
+        assertEquals("Неверный Начислили юзеру - реальный", 390, gr.returnBalance.real);
+        assertEquals("Неверный Начислили юзеру - бонусный", 160, gr.returnBalance.bonus);
+        assertEquals("Неверный Баланс юзера новый - реальный", 950, gr.balance.real);
+        assertEquals("Неверный Баланс юзера новый - бонусный", 720, gr.balance.bonus);
+
+        System.out.println("\n========================================================\n");
+    }
+
+    private static void case_primer_2(Game game) {
+        System.out.println("\ncase_rebuy_primer_1");
+        Balance balance = new Balance();
+        balance.real = 1000;
+        balance.bonus = 720;
+
+        float buyIn = 500;
+        float tableResult = 550;
+        float[] rebuys = {};
+        float[] rebuysTR = {};
+        Balance[] refils = {};
+
+        GameResult gr = game.game(balance, buyIn, tableResult, rebuys, refils, rebuysTR);
+
+        assertEquals("Неверная сумма байин+ребай", 500, gr.lastSumBuyIn);
+        assertEquals("Неверный table result", 550, gr.tableResult);
+        assertEquals("Неверный Начислили юзеру - реальный", 440, gr.returnBalance.real);
+        assertEquals("Неверный Начислили юзеру - бонусный", 110, gr.returnBalance.bonus);
+        assertEquals("Неверный Баланс юзера новый - реальный", 1050, gr.balance.real);
+        assertEquals("Неверный Баланс юзера новый - бонусный", 720, gr.balance.bonus);
+
+        System.out.println("\n========================================================\n");
+    }
+
+    private static void case_primer_1(Game game) {
+        System.out.println("\ncase_rebuy_primer_1");
+        Balance balance = new Balance();
+        balance.real = 100;
+        balance.bonus = 720;
+
+        float buyIn = 500;
+        float tableResult = 450;
+        float[] rebuys = {};
+        float[] rebuysTR = {};
+        Balance[] refils = {};
+
+        GameResult gr = game.game(balance, buyIn, tableResult, rebuys, refils, rebuysTR);
+
+        assertEquals("Неверная сумма байин+ребай", 500, gr.lastSumBuyIn);
+        assertEquals("Неверный table result", 450, gr.tableResult);
+        assertEquals("Неверный Начислили юзеру - реальный", 50, gr.returnBalance.real);
+        assertEquals("Неверный Начислили юзеру - бонусный", 400, gr.returnBalance.bonus);
+        assertEquals("Неверный Баланс юзера новый - реальный", 50, gr.balance.real);
+        assertEquals("Неверный Баланс юзера новый - бонусный", 720, gr.balance.bonus);
+
+        System.out.println("\n========================================================\n");
     }
 
     private static void case14(Game game) {
